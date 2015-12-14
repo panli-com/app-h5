@@ -1,0 +1,38 @@
+.mask-top,.mask-bottom{	
+	left: 0;
+	right: 0;
+	background: #FFF;
+}
+.mask-top{
+	position: absolute;
+	height: 50px;
+	top: 41px;
+}
+.mask-bottom{
+	position: fixed;	
+	height: 54px;	
+	bottom: 0; 
+}
+
+.switch-bottom{
+	position: fixed;
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	padding: 0 40px;
+	color: #FFF;
+	background-color: #60b044;
+	top: 50%;
+	right: 0;
+}
+.switch-bottom2{
+	position: fixed;
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	padding: 0 40px;
+	color: #FFF;
+	background-color: #60b044;
+	top: 50%;
+	left: 0;
+}
