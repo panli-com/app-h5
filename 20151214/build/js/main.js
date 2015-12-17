@@ -869,7 +869,7 @@ var fixedLib = {
 				'backgroundColor':'#FFF'
 			},
 			'bottomMask':{
-				'bottom':'20px',
+				'bottom':'0px',
 				'height':'50px',
 				'backgroundColor':'#FFF'
 			}
@@ -902,7 +902,7 @@ var fixedLib = {
 			}
 		}
 	}
-}
+} 
 ;(function(){
   
   
