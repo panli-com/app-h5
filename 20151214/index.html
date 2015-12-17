@@ -76,8 +76,9 @@ $(function(){
 		});
 	}
 	
+	var iframeSrc = $("#iframe").attr('src');
 	// 地址响应
-	function addressReact(address){
+	function addressReact(address){		
 		if(address == '中国'){
 			chinaAddressReact();
 		}else{
@@ -86,16 +87,42 @@ $(function(){
 	}
 	
 	
-	//中国地址响应	
+	
+	//中国地址数据响应		
 	function chinaAddressReact(){
-		alert('中国用户')
+		var domain = domainURI(iframeSrc);		
+		var data = fixedLib[domain]['china'];
+		console.log(data);
+		maskStyleReact(data);
 	}
 	
 	
-	//国外地址响应	
-	function noChinaAddressReact(){
-		alert('非中国用户')
+	//国外地址数据响应	
+	function noChinaAddressReact(){		
+		var domain = domainURI(iframeSrc);
+		console.log(domain);
+		var status = fixedLib[domain]['status'];
+		var data = '';
+		console.log(status);
+		if(status == 0){
+			data = fixedLib[domain]['noChina'];
+		}else{
+			data = fixedLib[domain]['china'];
+		};		
+		alert('非中国用户');
 	}
+	
+	//遮罩层页面响应
+	function maskStyleReact(data){
+		// var maskTopTop = data['topMask']['top'],
+		// 	maskTopHeight = data['topMask']['height'],
+		// 	maskTopBackgroundColor = data['topMask']['backgroundColor'];
+			
+			$(".mask-top").css(data['topMask']);
+			$(".mask-bottom").css(data['bottomMask']);
+	}
+	
+	
 	
 	// $.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js', function(){
    	// 		console.log(remote_ip_info); 
@@ -185,5 +212,11 @@ $(function(){
 	
 	
 });
+
+function domainURI(str){
+		var durl=/https?:\/\/(?:[^/]+\.)?([^./]+\.(?:cn|com|top))(?:$|\/)/;
+		domain = str.match(durl); 
+		return domain[1];
+ }
 </script>
 </html>
