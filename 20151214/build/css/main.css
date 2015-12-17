@@ -429,8 +429,7 @@ a {
 .mask-top, .mask-bottom {
   left: 0;
   right: 0;
-  background: #FFF;
-  opacity: 0.8; }
+  background: #FFF; }
 
 .mask-top {
   position: absolute;
