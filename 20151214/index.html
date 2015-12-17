@@ -16,13 +16,14 @@
 <title>app h5 遮挡</title>
 <link type="text/css" href="./build/css/main.min.css?v=0.0.2" rel="stylesheet" />
 <script src="./build/js/main.min.js?v=0.0.2" charset="utf-8"></script>
+<!--<script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>-->
+<script src="./build/js/json.js"></script>
 </head>
 <body>
 <!-- main -->
 <div id="app" class="app">
 	
-	<iframe id="iframe" src="https://detail.m.tmall.com/item.htm?id=524264564221&wp_m=userDefineItem_27&wp_pk=shop/mall_index_2634283647_20042361&from=inshop&wp_app=weapp&spm=a320p.7692171.1998705856.i1" width="100%" height="100%" frameborder="0" scrolling="auto"> 
-		您的浏览器不支持嵌入式框架，或者当前配置为不显示嵌入式框架。
+	<iframe id="iframe" src="https://detail.m.tmall.com/item.htm?spm=a222m.7628550.0.0_a222m.7628550.0.0&id=522184405247&abbucket=_AB-M743_B4&acm=201507135.1003.1.538601&aldid=2F8XFWVR&abtest=_AB-LR743-PR743&scm=1003.1.201507135.ITEM_522184405247_538601&pos=2" width="100%" height="100%" frameborder="0" scrolling="auto">
 	</iframe>
 	<span class="switch-bottom2" data-btn="1">获取地址</span>
 	<span class="switch-bottom" data-btn="1">开关遮罩</span>
@@ -34,7 +35,153 @@
 <script charset="utf-8">
 $(function(){
 	
+	// $.getJSON("http://apis.map.qq.com/ws/location/v1/ip?ip=61.135.17.68&key=PWFBZ-KR5A4-IWLUB-XF6DK-XFVZ7-UJBJD&format=json&jsoncallback=?", function(data){
+		
+	// });
+	
+	
+	//    var url='http://172.20.6.163:8998/User/GetLocation" +"?callback=?';
+	// 	$.ajax({
+	// 		url:url,
+	// 		dataType:'jsonp',
+	// 		processData: false, 
+	// 		type:'get',
+	// 		success:function(data){
+	// 		alert(data);
+	// 		},
+	// 		error:function(XMLHttpRequest, textStatus, errorThrown) {
+	// 		alert(XMLHttpRequest.status);
+	// 		alert(XMLHttpRequest.readyState);
+	// 		alert(textStatus);
+	// 		}});
+	getClientIp(); 
+	function getClientIp(){
+		$.ajax({
+			type:"GET",    
+			url: "http://api.nnn.li/ip/",
+			dataType:"json",
+			success:function (data) {
+				//console.log(JSON.stringify(data));
+				if(data.status == 0){
+					addressReact(data.result.ad_info.nation);
+					console.log(data.result.ad_info.nation);
+					return;
+				}				
+				console.log(data);
+			},
+			error:function (result, status) {
+			//处理错误
+				console.log(result);
+			}
+		});
+	}
+	
+	// 地址响应
+	function addressReact(address){
+		if(address == '中国'){
+			chinaAddressReact();
+		}else{
+			noChinaAddressReact();
+		}
+	}
+	
+	
+	//中国地址响应	
+	function chinaAddressReact(){
+		alert('中国用户')
+	}
+	
+	
+	//国外地址响应	
+	function noChinaAddressReact(){
+		alert('非中国用户')
+	}
+	
+	// $.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js', function(){
+   	// 		console.log(remote_ip_info); 
+	// });
+	
+	// $.ajax({
 
+	// 		type: "GET",
+			
+	// 		url: "http://172.20.6.163:8998/User/GetLocation?ip=45.35.45.35",
+			
+	// 		dataType:"jsonp",
+	// 		jsonp:"callback",
+	// 		jsonpCallback:"success_jsonpCallback",
+	// 		success: function (result) {
+			
+	// 			alert(result.Success);
+				
+	// 			alert(result.Content);
+			
+	// 		},
+			
+	// 		error: function (result, status) {
+			
+	// 		//处理错误
+			
+	// 			console.log(result);
+	// 		}
+
+	// });
+	
+	
+	
+	function jsonptest(){  
+		$.jsonp({  
+		url:'http://192.168.10.111/demo/testjson',  
+		data:{rel:13},  
+		callbackParameter:"callback",  
+		timeout:3000,  
+		dataFilter:function(json){  
+			console.log(json.name);  
+		
+		return json;  
+		},  
+		success:function(json,textStatus,xOptions){  
+			console.log(json.name);  
+		},  
+		error:function(xOptions,textStatus){  
+			console.log("jsonp.error:"+textStatus+", rel="+xOptions.data.rel);  
+		}  
+		});  
+	}  
+	
+	// var url="https://cnodejs.org/api/v1/topic/5433d5e4e737cbe96dcef312"
+	// 		+"?&callback=?";
+	// 	$.jsonp({
+	// 		"url": url,
+	// 		"success": function(data) {
+	// 			console.log(":"+data.result.name);
+	// 		},
+	// 		"error": function(d,msg) {
+	// 			alert("Could not find user "+msg);
+	// 		}
+	// 	});
+	
+	
+	// $.ajax(
+    // {
+    //     type:'get',
+    //     url : 'http://apis.map.qq.com/ws/location/v1/ip?ip=61.135.17.68&key=PWFBZ-KR5A4-IWLUB-XF6DK-XFVZ7-UJBJD',
+    //     dataType : 'jsonp',
+    //     jsonp:"jsoncallback",
+    //     success:function(data) {
+    //         console.log(data);
+    //     },
+    //     error : function(data) {
+    //         alert(data);
+    //     }
+    // }
+	//);
+
+	
+	
+	// $.get("http://apis.map.qq.com/ws/location/v1/ip",{ name: "John", time: "2pm" }, function(data){
+	// 	alert("Data Loaded: " + data);
+	// });
 	
 	
 });
