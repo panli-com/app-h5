@@ -27,7 +27,7 @@ function randomWord(randomFlag, min, max){
 
 // v  
 function appV(){
-  return "0.0.2";
+  return "0.0.3";
 }
 
 //获取服务端数据 
@@ -126,7 +126,7 @@ function getsec(str)
 // 今日 结束时间
 function getDateEnd(date) {
     var _date = new Date(date);
-    var year = _date.getFullYear(),
+    var year = _date.getFullYear(), 
        month = _date.getMonth(),
        day = _date.getDate();
     return new Date(year, month, day, 23, 59, 59);
@@ -161,11 +161,17 @@ function loadjscssfile(filename,filetype){
 // 获取域名
 function domainURI(str){
 		var durl=/https?:\/\/(?:[^/]+\.)?([^./]+\.(?:cn|com|top))(?:$|\/)/;
-		domain = str.match(durl); 
+		var domain = str.match(durl); 
 		return domain[1];
  }
 
 
+// 获取域名
+function domainURI2(str){
+		var durl= /(\w*\.\w*\.(?:com|cn|top)).*/;
+		var domain = str.match(durl); 
+		return domain[1];
+ }
 
 //中国地址数据响应		
 function chinaAddressReact(obj){				
