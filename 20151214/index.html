@@ -16,8 +16,8 @@
 <title>app h5 遮挡</title>
 <link type="text/css" href="./build/css/main.min.css?v=0.0.2" rel="stylesheet" />
 <script src="./build/js/main.min.js?v=0.0.2" charset="utf-8"></script>
-<!--<script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>-->
-<script src="./build/js/json.js"></script>
+<script src="./build/js/fixed.js"></script>
+
 </head>
 <body>
 <!-- main -->
@@ -34,127 +34,38 @@
 </body>
 <script charset="utf-8">
 $(function(){
+	 //获取url参数
+	 var framUrl = GetDomainUrl(5);
+	 
+	 console.log(framUrl);
+	 if(framUrl){
+		 $("#iframe").attr('src',framUrl);
+	 }else{
+		 console.log('url错误');
+		 return;
+	 }
+	 
+
+	 //获取用户ip信息 稍后改为 panli api
+        getSeverData('http://api.nnn.li/ip/', '', function (data) {
+            if (data.status == 0) {
+                addressReact(data.result.ad_info.nation);
+                return;
+            }
+
+        });    
 	
-	// $.getJSON("http://apis.map.qq.com/ws/location/v1/ip?ip=61.135.17.68&key=PWFBZ-KR5A4-IWLUB-XF6DK-XFVZ7-UJBJD&format=json&jsoncallback=?", function(data){
-		
-	// });
 	
-	
-	//    var url='http://172.20.6.163:8998/User/GetLocation" +"?callback=?';
-	// 	$.ajax({
-	// 		url:url,
-	// 		dataType:'jsonp',
-	// 		processData: false, 
-	// 		type:'get',
-	// 		success:function(data){
-	// 		alert(data);
-	// 		},
-	// 		error:function(XMLHttpRequest, textStatus, errorThrown) {
-	// 		alert(XMLHttpRequest.status);
-	// 		alert(XMLHttpRequest.readyState);
-	// 		alert(textStatus);
-	// 		}});
-	getClientIp(); 
-	function getClientIp(){
-		$.ajax({
-			type:"GET",    
-			url: "http://api.nnn.li/ip/",
-			dataType:"json",
-			success:function (data) {
-				//console.log(JSON.stringify(data));
-				if(data.status == 0){
-					addressReact(data.result.ad_info.nation);
-					console.log(data.result.ad_info.nation);
-					return;
-				}				
-				console.log(data);
-			},
-			error:function (result, status) {
-			//处理错误
-				console.log(result);
-			}
-		});
-	}
-	
-	var iframeSrc = $("#iframe").attr('src');
+	var iframeSrc = $("#iframe").attr('src'),
+		domain = domainURI(iframeSrc);
 	// 地址响应
 	function addressReact(address){		
-		if(address == '中国'){
-			chinaAddressReact();
+		if(address == '中国'){			
+			chinaAddressReact(fixedLib[domain]);
 		}else{
-			noChinaAddressReact();
+			noChinaAddressReact(fixedLib[domain]);
 		}
 	}
-	
-	
-	
-	//中国地址数据响应		
-	function chinaAddressReact(){
-		var domain = domainURI(iframeSrc);		
-		var data = fixedLib[domain]['china'];
-		console.log(data);
-		maskStyleReact(data);
-	}
-	
-	
-	//国外地址数据响应	
-	function noChinaAddressReact(){		
-		var domain = domainURI(iframeSrc);
-		console.log(domain);
-		var status = fixedLib[domain]['status'];
-		var data = '';
-		console.log(status);
-		if(status == 0){
-			data = fixedLib[domain]['noChina'];
-		}else{
-			data = fixedLib[domain]['china'];
-		};	
-		maskStyleReact(data);
-		alert('非中国用户');
-	}
-	
-	//遮罩层页面响应
-	function maskStyleReact(data){
-		// var maskTopTop = data['topMask']['top'],
-		// 	maskTopHeight = data['topMask']['height'],
-		// 	maskTopBackgroundColor = data['topMask']['backgroundColor'];
-			
-			$(".mask-top").css(data['topMask']);
-			$(".mask-bottom").css(data['bottomMask']);
-	}
-	
-	
-	
-	// $.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js', function(){
-   	// 		console.log(remote_ip_info); 
-	// });
-	
-	// $.ajax({
-
-	// 		type: "GET",
-			
-	// 		url: "http://172.20.6.163:8998/User/GetLocation?ip=45.35.45.35",
-			
-	// 		dataType:"jsonp",
-	// 		jsonp:"callback",
-	// 		jsonpCallback:"success_jsonpCallback",
-	// 		success: function (result) {
-			
-	// 			alert(result.Success);
-				
-	// 			alert(result.Content);
-			
-	// 		},
-			
-	// 		error: function (result, status) {
-			
-	// 		//处理错误
-			
-	// 			console.log(result);
-	// 		}
-
-	// });
-	
 	
 	
 	function jsonptest(){  
@@ -177,47 +88,11 @@ $(function(){
 		});  
 	}  
 	
-	// var url="https://cnodejs.org/api/v1/topic/5433d5e4e737cbe96dcef312"
-	// 		+"?&callback=?";
-	// 	$.jsonp({
-	// 		"url": url,
-	// 		"success": function(data) {
-	// 			console.log(":"+data.result.name);
-	// 		},
-	// 		"error": function(d,msg) {
-	// 			alert("Could not find user "+msg);
-	// 		}
-	// 	});
 	
-	
-	// $.ajax(
-    // {
-    //     type:'get',
-    //     url : 'http://apis.map.qq.com/ws/location/v1/ip?ip=61.135.17.68&key=PWFBZ-KR5A4-IWLUB-XF6DK-XFVZ7-UJBJD',
-    //     dataType : 'jsonp',
-    //     jsonp:"jsoncallback",
-    //     success:function(data) {
-    //         console.log(data);
-    //     },
-    //     error : function(data) {
-    //         alert(data);
-    //     }
-    // }
-	//);
-
-	
-	
-	// $.get("http://apis.map.qq.com/ws/location/v1/ip",{ name: "John", time: "2pm" }, function(data){
-	// 	alert("Data Loaded: " + data);
-	// });
 	
 	
 });
 
-function domainURI(str){
-		var durl=/https?:\/\/(?:[^/]+\.)?([^./]+\.(?:cn|com|top))(?:$|\/)/;
-		domain = str.match(durl); 
-		return domain[1];
- }
+
 </script>
 </html>

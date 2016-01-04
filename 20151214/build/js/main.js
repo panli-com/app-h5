@@ -539,61 +539,6 @@ function randomWord(randomFlag, min, max){
 }
 
 
-//获取抢代金券剩余数量
-function CouponNumberState(callback) {
-    var radNub = randomWord(false, 18);
-     $.ajax({
-            type: "POST",
-            url: "/App_Services/wsSpecial.asmx/Coupon_NumberState?time="+radNub,
-            dataType: "json",
-            data: '',
-            contentType: "application/json;utf-8",
-            timeout: 20000,
-            error: function () {
-                PL.open({
-                    content: '请求错误，请再试',
-                    time: 2
-                });
-            },
-            success: function (data) {
-                callback(data);
-            }
-        });    
-}
-
-
-var moCoReact = [{"CouponType":50,"state":-1},{"CouponType":200,"state":-1},{"CouponType":300,"state":0},{"CouponType":0,"state":0}];
-
-//代金券数量响应
-function CouponReact(obj){    
-    for(var i = 0;i< obj.length;i++){
-       var  _type = obj[i].CouponType,
-            _state = obj[i].state;        
-       if(_state != 0){
-            $("#coupon-type-"+_type).removeClass("red-packet-btn").addClass("on").attr("no-click", 4);
-       }      
-    }   
-    
-}
-
-
-function ReturnLayer(num){
-  var icon = 5;
-  var num = Number(num);
-  num == 1 ? icon = 6 : "";
-  var text = [
-    "恭喜您成功抢到代金券",
-    "每个人只能领两张券哦",
-    "这张券已经抢过了哦",
-    "啊喔, 这张券已经被大家抢光了呢"
-  ];
- 
-  PL.open({
-    content: text[num-1],
-    time: 5
-});
-}
-
 // v  
 function appV(){
   return "0.0.2";
@@ -603,10 +548,11 @@ function appV(){
 function getSeverData(url,obj,callback) {
     var radNub = randomWord(false, 18);
      $.ajax({
-            type: "POST",
-            url: url+"?time="+radNub,
+            type: "get",
+            url: url,
             dataType: "json",
             data: obj,
+            cache: false,
             contentType: "application/json;utf-8",
             timeout: 20000,
             error: function () {
@@ -626,41 +572,9 @@ function getSeverData(url,obj,callback) {
 // 这里是一些常用的函数
 // 2015年9月25日 11:38:51
 
-/*
-* 判断是否是pc
-* */
 
-function is_pc(){
-    var os = new Array("Android","iPhone","Windows Phone","iPod","BlackBerry","MeeGo","SymbianOS");  // 其他类型的移动操作系统类型，自行添加
-    var info = navigator.userAgent;
-    var len = os.length;
-    for (var i = 0; i < len; i++) {
-        if (info.indexOf(os[i]) > 0){
-            return false;
-        }
-    }
-    return true;
-};
 
-// 获取服务器时间
-function getServerTime(callback){
-  $.ajax({
-       type: "POST",
-       cache: false,
-       async: false,
-       url: "/App_Services/wsDefault.asmx/GetDateTime",
-       dataType: "json",
-       contentType: "application/json;utf-8",
-       timeout: 10000,
-       error: function () {
-       },
-       success: function (data) {
-           if(data){
-             callback(parseInt(data.d));
-           }
-       }
-    });
-}
+
 // 获取服务器时间 
 function getServerTimeStamp(callback){
   $.ajax({
@@ -731,48 +645,6 @@ function getDateEnd(date) {
        day = _date.getDate();
     return new Date(year, month, day, 23, 59, 59);
 }
-//这是有设定过期时间的使用示例：
-//s20是代表20秒
-//s20是代表20秒
-//h是指小时，如12小时则是：h12
-//d是天数，30天则：d30
-
-
-
-//倒计时 PLCountdown(1451404800000)
-function PLCountdown(end,sta,i){
-   function p(s) {
-            return s < 10 ? '0' + s : s;
-   } 
-    
-  if(!i){
-    i = 1
-  }
-  if(!sta){
-    sta = new Date().getTime();
-  }
-  var t = parseInt(end) - parseInt(sta),
-   d=Math.floor(t/1000/60/60/24),
-   h=Math.floor(t/1000/60/60%24),
-   m=Math.floor(t/1000/60%60),
-   s=Math.floor(t/1000%60),
-   index = i+1;
-  if(t < 0){
-    d = h = m = s = '00';
-  }
-
-  var time = {
-    d:p(d),
-    h:p(h),
-    m:p(m),
-    s:p(s),
-    i:p(index),
-    end:p(end),
-    sta:p(sta)
-  };
-  return time;
-}
-
 
 function removeEle(removeObj) {
     removeObj.parentNode.removeChild(removeObj);
@@ -799,110 +671,63 @@ function loadjscssfile(filename,filetype){
     
 }
 
-function htmlScroll(data,call){   
+
+// 获取域名
+function domainURI(str){
+		var durl=/https?:\/\/(?:[^/]+\.)?([^./]+\.(?:cn|com|top))(?:$|\/)/;
+		domain = str.match(durl); 
+		return domain[1];
+ }
+
+
+
+//中国地址数据响应		
+function chinaAddressReact(obj){				
+    var data = obj['china'];
+    console.log(data);
+    maskStyleReact(data);
+}
+
+
+//国外地址数据响应	
+function noChinaAddressReact(obj){		
     
-    var _html = '';     
-    for(var i= 0;i<data.length;i++){
-        var name = data[i].Name,
-            proName = data[i].ProductName,
-            url = 'javascript:void(0);';
-            if(data[i].Url){
-              url = data[i].Url;
-            }
-         _html +=  '<li><span class="name">'+ name +': </span>'+
-                       '<a href="'+ url +'" target="_blank" class="pro-name">'+
-                        '' + proName + '</a></li>';
-                      
-                    
-        
-    }    
-    $("#scroll-main-u1").html(_html);
-    call(); 
-    return _html;
+    var status = obj['status'];
+    var data = '';
+    console.log(status);
+    if(status == 0){
+        data = obj['nochina'];
+    }else{
+        data = obj['china'];
+    };	
+    maskStyleReact(data);
+    
 }
 
-//滚动动画
-function scrollAnmi(e) {
-    $(e).ZScroll({ line: 1, speed: 1000, timer: 3000, up: "but_up", down: "but_down" });
+//遮罩层页面响应
+function maskStyleReact(data){			
+        $(".mask-top").css(data['topmask']);
+        $(".mask-bottom").css(data['bottommask']);
 }
 
-function enTimeF(endTime,nowTime){
-		var TimeJson = PLCountdown(endTime,nowTime),
-			d = TimeJson.d,
-			h = TimeJson.h,
-			m = TimeJson.m,
-			s = TimeJson.s;
-			
-			if( parseInt(d) == 0){
-				
-				$('.banner7').hide();
-				$('.banner8').fadeIn("slow");
-			}
-		$(".time-day").text(d);
-		$(".time-hour").text(h);
-		$(".time-minute").text(m);
-		$(".time-second").text(s);
-		
-		setTimeout(function(){
-			enTimeF(endTime-1000,nowTime)
-		},1000)
-	}
-var fixedLib = {	
-	'tmall.com':{
-		'status':0,
-		'china':{
-			'topMask':{
-				'top':'40px',
-				'height':'50px',
-				'backgroundColor':'#FFF'
-			},
-			'bottomMask':{
-				'bottom':'0',
-				'height':'50px',
-				'backgroundColor':'#FFF'
-			}
-		},
-		'noChina':{
-			'topMask':{
-				'top':'0px',
-				'height':'50px',
-				'backgroundColor':'#FFF'
-			},
-			'bottomMask':{
-				'bottom':'0px',
-				'height':'50px',
-				'backgroundColor':'#FFF'
-			}
-		}
-	},
-	'taobao.com':{
-		'status':0,
-		'china':{
-			'topMask':{
-				'top':'20px',
-				'height':'50px',
-				'backgroundColor':'#FFF'
-			},
-			'bottomMask':{
-				'bottom':'20px',
-				'height':'50px',
-				'backgroundColor':'#FFF'
-			}
-		},
-		'noChina':{
-			'topMask':{
-				'top':'0px',
-				'height':'50px',
-				'backgroundColor':'#FFF'
-			},
-			'bottomMask':{
-				'bottom':'20px',
-				'height':'50px',
-				'backgroundColor':'#FFF'
-			}
-		}
-	}
-} 
+
+
+
+
+
+//js获取url参数
+
+
+function GetDomainUrl(num)
+{
+     //var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     
+     //var r = window.location.search.substr(1).match(reg);
+     var sea = window.location.search;
+     sea = sea.substr(num,sea.length);
+     if(sea!=null)return sea;return null;
+     //if(sea!=null)return  unescape(r[2]); return null;
+}
 ;(function(){
   
   

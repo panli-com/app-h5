@@ -2,24 +2,24 @@ var fixedLib = {
 	'tmall.com':{
 		'status':0,
 		'china':{
-			'topMask':{
+			'topmask':{
 				'top':'40px',
 				'height':'50px',
 				'backgroundColor':'#FFF'
 			},
-			'bottomMask':{
+			'bottommask':{
 				'bottom':'0',
 				'height':'50px',
 				'backgroundColor':'#FFF'
 			}
 		},
-		'noChina':{
-			'topMask':{
+		'nochina':{
+			'topmask':{
 				'top':'0px',
 				'height':'50px',
 				'backgroundColor':'#FFF'
 			},
-			'bottomMask':{
+			'bottommask':{
 				'bottom':'0px',
 				'height':'50px',
 				'backgroundColor':'#FFF'
@@ -29,24 +29,24 @@ var fixedLib = {
 	'taobao.com':{
 		'status':0,
 		'china':{
-			'topMask':{
+			'topmask':{
 				'top':'20px',
 				'height':'50px',
 				'backgroundColor':'#FFF'
 			},
-			'bottomMask':{
+			'bottommask':{
 				'bottom':'20px',
 				'height':'50px',
 				'backgroundColor':'#FFF'
 			}
 		},
-		'noChina':{
-			'topMask':{
+		'nochina':{
+			'topmask':{
 				'top':'0px',
 				'height':'50px',
 				'backgroundColor':'#FFF'
 			},
-			'bottomMask':{
+			'bottommask':{
 				'bottom':'20px',
 				'height':'50px',
 				'backgroundColor':'#FFF'
