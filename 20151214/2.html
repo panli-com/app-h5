@@ -13,8 +13,8 @@
 <meta name="keywords" content="Panli代购,代购,海外代购,华人代购,代购中国,淘宝代购,留学生代购">
 <meta name="description" content="决战双12，一年剁一回！不止50%OFF，1212购物券抢先领！Panli网－全球最大的专业代购网络，为海外华人代购国内各种商品，方便您的购物需求">
 <!-- <meta content="maximum-dpr=2" name="flexible" />
-<meta content="modeName=640-12" name="grid" /> -->
-<title>app h5 遮挡</title>
+<meta content="modeName=640-12" name="grid" />app h5 遮挡-->
+<title> iframe page</title>
 <link type="text/css" href="http://172.20.7.231:667/Ued/H5/appMask/build/css/main.min.css?v=0.0.2" rel="stylesheet" />
 <script src="http://172.20.7.231:667/Ued/H5/appMask/build/js/main.min.js?v=0.0.2" charset="utf-8"></script>
 </head>
@@ -22,25 +22,26 @@
 <!-- main -->
 <div id="app" class="app">
 	
-	<iframe id="iframe" src="" width="100%" height="100%" frameborder="0" scrolling="auto">
+	<iframe id="iframe" src="http://item.m.jd.com/product/1793394558.html" width="100%" height="100%" frameborder="0" scrolling="auto">
 	</iframe>
 	
-	<div class="mask-top"></div>
-	<div class="mask-bottom"></div>
+	<!--<div class="mask-top"></div>
+	<div class="mask-bottom"></div>-->
 </div>
 <!-- main end -->
 </body>
 <script charset="utf-8" type="text/javascript">
      
     $(function () {
+        
 
         //获取url参数
         var framUrl = GetDomainUrl(5);
 
-
+        alert($("body").width());
         if (framUrl) {
 		      
-            $("#iframe").attr('src', framUrl);
+            $("#iframe").css({'width':$("body").width()}).attr('src', framUrl);
         } else {
             console.log('url错误');
             return;
