@@ -4,7 +4,7 @@
 ** randomWord 产生任意长度随机字母数字组合
 ** randomFlag-是否任意长度 min-任意长度最小位[固定位数] max-任意长度最大位
 使用方法
-
+ 
 生成3-32位随机串：randomWord(true, 3, 32)
 生成88位随机串：randomWord(false, 88)
 */
@@ -27,7 +27,7 @@ function randomWord(randomFlag, min, max){
 
 // v  
 function appV(){
-  return "0.0.4";
+  return "0.0.5";
 }
 
 //获取服务端数据 
@@ -197,9 +197,20 @@ function noChinaAddressReact(obj){
 }
 
 //遮罩层页面响应
-function maskStyleReact(data){			
+function maskStyleReact(data){
+    
+    if(data['china'] == null){
+         PL.open({
+            content: 'url-查询返回数据错误',
+            time: 2
+        });  
+        
+    }else{
         $(".mask-top").css(data['topmask']);
         $(".mask-bottom").css(data['bottommask']);
+    }  
+    
+        
 }
 
 
