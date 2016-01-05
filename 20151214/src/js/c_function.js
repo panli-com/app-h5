@@ -27,7 +27,7 @@ function randomWord(randomFlag, min, max){
 
 // v  
 function appV(){
-  return "0.0.3";
+  return "0.0.4";
 }
 
 //获取服务端数据 

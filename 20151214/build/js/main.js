@@ -541,7 +541,7 @@ function randomWord(randomFlag, min, max){
 
 // v  
 function appV(){
-  return "0.0.3";
+  return "0.0.4";
 }
 
 //获取服务端数据 
@@ -770,6 +770,14 @@ function GetDomainUrl(num)
               _t.attr("data-btn",1)
             }
            
+     });
+     
+     
+     $(".mask-top,.mask-bottom").on("touchend click touchmove touchstart",function(event){
+          event.stopPropagation();
+          console.log("阻止");
+          return false;
+        
      });
      
       // $(".go-to-btn").on("touchstart touchmove",function(){

@@ -36,6 +36,14 @@
            
      });
      
+     
+     $(".mask-top,.mask-bottom").on("touchend click touchmove touchstart",function(event){
+          event.stopPropagation();
+          console.log("阻止");
+          return false;
+        
+     });
+     
       // $(".go-to-btn").on("touchstart touchmove",function(){
       //   $(this).addClass("on");
       // });

@@ -387,6 +387,12 @@ a {
   -webkit-touch-callout: none;
   -webkit-user-select: none; }
 
+iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; }
+
 .app {
   min-width: 320px;
   max-width: 640px;
