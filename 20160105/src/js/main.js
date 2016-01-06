@@ -6,7 +6,10 @@
    //touchend:         
    //touchcancel:        
   
-  $(function(){     
+  $(function(){   
+    
+     alert("sss");
+      
      $("body").on("touchend click touchmove touchstart",".mask-top,.mask-bottom",function(event){
           console.log("阻止");
           event.stopPropagation();          
@@ -21,6 +24,8 @@
       // src :厂家地址
       // 客户地址信息：国内用户 和 非
         addressReact(api,src,'国内用户'); 
+     
+    
      
   });
     
