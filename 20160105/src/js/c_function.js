@@ -3,7 +3,7 @@ function appV(){
   return "0.0.6";
 }
 
-//获取服务端数据 
+//获取服务端数据  
 function getSeverData(url,obj,callback) {
    
      $.ajax({

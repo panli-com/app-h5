@@ -208,7 +208,7 @@ function maskStyleReact(data){
     }else{
         $(".mask-top").css(data['topmask']);
         $(".mask-bottom").css(data['bottommask']);
-    }  
+    }   
     
         
 }

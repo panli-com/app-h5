@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 
-var day = '20160105';
+var day = '20160105',
+    mainjs = 'appcreat';
 
 // 引入组件
 var sass = require('gulp-sass'),
@@ -95,7 +96,7 @@ gulp.task('homeHtml',function(){
 
 gulp.task('scripts',function(){
     return gulp.src('./'+ day +'/src/js/*.js')
-        .pipe(concat('main.js'))
+        .pipe(concat(mainjs+'.js'))
         .pipe(gulp.dest('./'+ day +'/build/js'))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
