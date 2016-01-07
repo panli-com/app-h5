@@ -3,10 +3,10 @@ function appV(){
   return "0.0.6";
 }
 
-//获取服务端数据  
+//获取服务端数据   
 function getSeverData(url,obj,callback) {
    
-     $.ajax({
+     PanLi.ajax({
             type: "get",
             url: url,
             dataType: "json",
@@ -26,7 +26,7 @@ function getSeverData(url,obj,callback) {
 
 // 获取域名
 function domainURI(str){
-		var durl=/https?:\/\/(?:[^/]+\.)?([^./]+\.(?:cn|com|top))(?:$|\/)/;
+		var durl=/https?:\/\/(?:[^/]+\.)?([^./]+\.(?:cn|com|top))(?:PanLi|\/)/;
 		var domain = str.match(durl); 
 		return domain[1];
  }
@@ -73,9 +73,9 @@ function maskStyleReact(data){
         var styleC = 'position: fixed;left:0;right:0;width:100%;background:#FFF;';
         var html = '<div class="mask-bottom" style="'+ styleC +'"></div><div class="mask-top" style="'+ styleC +'"></div>';       
         
-        $("body").append(html);             
-        $(".mask-top").css(data['topmask']);
-        $(".mask-bottom").css(data['bottommask']);
+        PanLi("body").append(html);             
+        PanLi(".mask-top").css(data['topmask']);
+        PanLi(".mask-bottom").css(data['bottommask']);
         
 }
 
