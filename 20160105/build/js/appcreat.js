@@ -120,10 +120,10 @@ function addressReact(api,iframeSrc,address) {
           PanLi(".action-bar,#detail-base-smart-banner,.tryme,.cart-concern-btm-fixed,.item-action").remove();
           
           
-          console.log(_hostName);
+           
           
           if(_hostName == 'h5.m.taobao.com'){
-              console.log("==h5.m.taobao.com")
+              console.log("竟然是手淘 == h5.m.taobao.com")
               PanLi('body').css({'paddingTop':'0'});             
               
           } 
@@ -136,10 +136,10 @@ function addressReact(api,iframeSrc,address) {
           
           setTimeout(function(){
             var taobaoClose = PanLi("[id$='-close']");
-            console.log(taobaoClose.html());			
+           	
             taobaoClose.parent().remove();
             if(_hostName == 'h5.m.taobao.com'){
-              console.log("==h5.m.taobao.com")
+              
               PanLi('body').css({'paddingTop':'0'});
             }
           },500)
