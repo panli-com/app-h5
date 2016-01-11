@@ -10424,7 +10424,7 @@ function addressReact(api,iframeSrc,address) {
           PanLi(".action-bar").html('');
            
           
-          PanLi(".action-bar,#detail-base-smart-banner,.tryme,.cart-concern-btm-fixed,.item-action,.guang-smart-banner").remove();
+          PanLi(".action-bar,#detail-base-smart-banner,.tryme,.cart-concern-btm-fixed,.item-action,.guang-smart-banner,#J_BottomSmartBanner").remove();
           
           
            
