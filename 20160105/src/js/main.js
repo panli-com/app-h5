@@ -3,7 +3,7 @@
   
    //touchstart:     
    //touchmove:     
-   //touchend:         
+   //touchend:          
    //touchcancel:        
   
   PanLi(function(){
@@ -12,9 +12,9 @@
           var _hostName = window.location.hostname;    
      
           PanLi(".action-bar").html('');
+           
           
-          
-          PanLi(".action-bar,#detail-base-smart-banner,.tryme,.cart-concern-btm-fixed,.item-action").remove();
+          PanLi(".action-bar,#detail-base-smart-banner,.tryme,.cart-concern-btm-fixed,.item-action,.guang-smart-banner").remove();
           
           
            
