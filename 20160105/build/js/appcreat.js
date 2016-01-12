@@ -10424,9 +10424,30 @@ function addressReact(api,iframeSrc,address) {
           PanLi(".action-bar").html('');
            
           
-          PanLi(".action-bar,#detail-base-smart-banner,.tryme,.cart-concern-btm-fixed,.item-action,.guang-smart-banner,#J_BottomSmartBanner").remove();
+         // PanLi(".action-bar,#detail-base-smart-banner,.tryme,.cart-concern-btm-fixed,.item-action,.guang-smart-banner,#J_BottomSmartBanner").remove();
+          
+          var url= '';
+          
+          if(_hostName == 'localhost'){
+              url = 'taobao.com';
+          }else{
+              url = domainURI(window.location.href);
+          }
           
           
+          var getUrl = 'http://172.20.7.232:5029/H5API/H5DomControl?url='+url;
+          var obj = '';
+          
+         
+
+          
+          getSeverData(getUrl,obj,function(data){
+             
+              var elements = data[0].DOMS;
+               PanLi(elements).remove();
+               console.log('执行完成');
+              
+          })
            
           
           if(_hostName == 'h5.m.taobao.com'){
