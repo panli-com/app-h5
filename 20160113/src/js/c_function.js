@@ -6,7 +6,7 @@ function appV(){
 
 // 获取域名 
 function domainURI(str){
-		var durl=/https?:\/\/(?:[^/]+\.)?([^./]+\.(?:cn|com|net|top))(?:PanLi|\/)/;
+		var durl=/https?:\/\/(?:[^/]+\.)?([^./]+\.(?:com.cn|cn|com|net|top))(?:PanLi|\/)/;
 		var domain = str.match(durl); 
 		return domain[1];
  }

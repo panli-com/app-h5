@@ -20,8 +20,7 @@
           if(_hostName == 'localhost'){
               url = 'taobao.com';
           }else{
-              //url = tldjs.getDomain(window.location.href);
-              url = domainURI(window.location.href);
+              url = tldjs.getDomain(window.location.href);
           }
           
           
@@ -40,11 +39,6 @@
           if(_hostName == 'detail.m.tmall.com'){
             PanLi("#content").css({'paddingTop':'0'});
           }
-          
-          
-          
-         
-          
           
           
           setTimeout(function(){
