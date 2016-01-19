@@ -12187,7 +12187,7 @@ var PLElements = {
     "dangdang.com":".app-download-wrapper,.shopping_cart",
     "vancl.com":"#floatBox,.buy",
     "amazon.com":"#smart-app-banner,#goldboxBuyBox",
-    "mogujie.com":"#M_topLogin,.ui-hada,#DetailFootbar",
+    "mogujie.com":"#M_topLogin,.ui-hada,#DetailFootbar,.ui-middle-banner",
     "meilishuo.com":"img,.buy_box,.welcome_downLoad",
     "smzdm.com":".foot_banner,.download-logo",
     "vip.com":".u-download-bar,.modal-body-noBotton,.app-download-bar,.fixed-bottom",
@@ -12198,7 +12198,7 @@ var PLElements = {
     "lefeng.com":".ui-decoration-hyperlink",
     "paipai.com":".mod_download,.cbox_hd",
     "shopin.net":"ss",
-    "gome.com.cn":".supernatant,.buy_area_now",
+    "com.cn":".supernatant,.buy_area_now,.drain_con,.drainage",
     "quwan.com":"#appDown,.appCode",
     "xiangqu.com":".app-down-bar,.detail-buy-cart",
     "redbaby.suning.com":"ss",
@@ -12238,7 +12238,17 @@ var PLElements = {
           
           console.log(PLElements[url]);
           
+          
+          
           PanLi(PLElements[url]).remove();
+          
+          function setTimeoutF(){
+               setTimeout(function(){
+                    PanLi(PLElements[url]).remove();
+                   setTimeoutF()
+               },700)
+          }
+          
           
           if(_hostName == 'h5.m.taobao.com'){
               console.log("竟然是手淘 == h5.m.taobao.com")
@@ -12250,9 +12260,25 @@ var PLElements = {
           if(_hostName == 'detail.m.tmall.com'){
             PanLi("#content").css({'paddingTop':'0'});
           }
-          
-          
-          
+          console.log(new Date);
+          if(url == 'tmall.com'){
+              console.log(url);
+              setTimeout(function(){
+                  
+                   console.log(new Date);
+                PanLi('.app-download-popup,#J_BottomSmartBannerLink').remove();   
+               },3200)
+
+          }
+         
+          console.log(url); 
+           if(url == 'meilishuo.com'){
+               
+               console.log(url);
+               PanLi('#poster_blcok').css({'marginTop':'0'})
+               
+           }
+
          
           
           

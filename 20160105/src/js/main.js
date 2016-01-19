@@ -28,7 +28,17 @@
           
           console.log(PLElements[url]);
           
+          
+          
           PanLi(PLElements[url]).remove();
+          
+          function setTimeoutF(){
+               setTimeout(function(){
+                    PanLi(PLElements[url]).remove();
+                   setTimeoutF()
+               },600)
+          }
+          
           
           if(_hostName == 'h5.m.taobao.com'){
               console.log("竟然是手淘 == h5.m.taobao.com")
@@ -40,9 +50,25 @@
           if(_hostName == 'detail.m.tmall.com'){
             PanLi("#content").css({'paddingTop':'0'});
           }
-          
-          
-          
+          console.log(new Date);
+          if(url == 'tmall.com'){
+              console.log(url);
+              setTimeout(function(){
+                  
+                   console.log(new Date);
+                PanLi('.app-download-popup,#J_BottomSmartBannerLink').remove();   
+               },3200)
+
+          }
+         
+          console.log(url); 
+           if(url == 'meilishuo.com'){
+               
+               console.log(url);
+               PanLi('#poster_blcok').css({'marginTop':'0'})
+               
+           }
+
          
           
           
