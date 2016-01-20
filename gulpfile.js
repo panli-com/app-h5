@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 
-var day = '20160105',
+var day = '20160120',
     mainjs = 'appcreat';
 
 // 引入组件

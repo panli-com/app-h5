@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>摇一摇</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body>
+		<div id="bg-flower">
+			<audio preload="auto" id="audio_male" src="audio/male.mp3"></audio>
+			<audio preload="auto" id="audio_match" src="audio/match.mp3"></audio>
+			<audio preload="auto" id="audio_nomatch" src="audio/nomatch.mp3"></audio>
+		</div>
+		<section id="handsome">
+			<div></div>
+			<div>
+				<b id="loading"> 正在识别听到的声音...</b>
+			</div>
+		</section>
+		<section>
+			<dl id="result">
+				<dt></dt>
+				<dd>平常人<br/>距离1123公里</dd>
+			</dl>
+		</section>
+		<ul id="footer">
+			<li class="active">人</li>
+			<li>歌曲</li>
+			<li>电视</li>
+		</ul>
+		<script src="js/index.js"></script>
+		<script>
+			footer.addEventListener("click",function(e){
+				var li = e.target;
+				if("LI"===li.tagName){
+					document.title = "摇"+li.innerHTML;
+					onShake();
+					var lis = footer.getElementsByTagName("li");
+					for(var n=0,len=lis.length;n<len;n++){
+						lis[n].setAttribute("class","");
+					}
+					li.setAttribute("class","active");
+				}
+			});
+			function animationend(e){
+				var div = e.target;
+				div.className = "";
+				loading.className = "active";
+				result.className = "";
+				setTimeout(function(){
+					audio_match.play();
+					loading.className = "";
+					result.className = "result-in";
+				},1200);
+			}
+			handsome.addEventListener("animationend",animationend);
+			handsome.addEventListener("webkitAnimationEnd",animationend);
+
+			var hands = handsome.getElementsByTagName("div");
+			function onShake(){
+				if(hands[1].className){
+					return;
+				}
+				audio_male.play();
+				hands[0].setAttribute("class","hand-up");
+				hands[1].className = "hand-down";
+				if(result.className === "result-in"){
+					result.className = "result-out";
+				}
+			}
+			ShakeHandler(onShake,2500);
+		</script>
+	</body>
+</html>
