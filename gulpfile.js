@@ -2,7 +2,7 @@ var gulp = require('gulp');
 
 var day = '20160120',
     mainjs = 'app',
-    maincss = 'main';
+    maincss = 'app';
 
 // 引入组件
 var sass = require('gulp-sass'),

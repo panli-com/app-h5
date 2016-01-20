@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>微信摇一摇</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="./build/css/main.min.css" />
+	</head>
+	<body>
+		<div id="bg-flower">
+			<audio preload="auto" id="audio_male" src="./build/audio/male.mp3"></audio>
+			<audio preload="auto" id="audio_match" src="./build/audio/match.mp3"></audio>
+			<audio preload="auto" id="audio_nomatch" src="./build/audio/nomatch.mp3"></audio>
+		</div>
+		<section id="handsome">
+			<div></div>
+			<div>
+				<b id="loading"> 正在识别听到的声音...</b>
+			</div>
+		</section>
+		<section>
+			<dl id="result">
+				<dt></dt>
+				<dd>平常人<br/>距离1123公里</dd>
+			</dl>
+		</section>
+		<ul id="footer">
+			<li class="active">人</li>
+			<li>歌曲</li>
+			<li>电视</li>
+		</ul>
+		<script src="./build/js/app.min.js"></script>
+	</body>
+</html>
