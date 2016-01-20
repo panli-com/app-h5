@@ -10,7 +10,7 @@ function ShakeHandler(callback,threshold){
 	}
 	if (!window.DeviceMotionEvent) {
 		alert('本设备不支持 devicemotion 事件');
-		return;
+		return; 
 	}
 	ShakeHandler._inited = true;
 	var callbacks = [];
