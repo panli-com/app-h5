@@ -1,35 +1,63 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>微信摇一摇</title>
-		<meta charset="UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="./build/css/app.min.css" />
-	</head>
-	<body>
-	<div id="bg-flower">
-			<audio preload="auto" id="audio_male" src="./build/audio/male.mp3"></audio>
-			<audio preload="auto" id="audio_match" src="./build/audio/match.mp3"></audio>
-			<audio preload="auto" id="audio_nomatch" src="./build/audio/nomatch.mp3"></audio>
-		</div>
-        <div class="text"></div>
-		<section id="handsome">
-			<div></div>
-			<div>
-				<b id="loading"> 正在识别听到的声音...</b>
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>摇一摇</title>
+	<link rel="stylesheet" type="text/css" href="./build/css/app.min.css">
+</head>
+<body>
+<!-- 摇一摇音乐 -->
+<audio id="shakemusic" src="./build/music/red-01.mp3" style="display: none;"></audio>
+<audio id="openmusic" src="./build/music/red-02.mp3" style="display: none;"></audio>
+<!-- End 摇一摇音乐 -->
+<!-- 礼品 -->
+<div class="red_bg">
+	<div class="red-ts"></div>
+	<div class="red-ss-bg">
+		<span class="red-ss animated"></span>
+	</div>
+	<div class="red-jh">
+		<!--您还有<span>3</span>次机会-->
+	</div>
+	<div class="red-tc">
+		<!-- 已中奖 -->
+		<div class="red-yzj">
+			<div class="red-tc-k">
+				<p>￥<span>50.00</span>元</p>
+				恭喜你获得</br>打包幸福代金券
 			</div>
-		</section>
-		<section>
-			<dl id="result">
-				<dt></dt>
-				<dd>平常人<br/>距离1123公里</dd>
-			</dl>
-		</section>	
-        <ul id="footer">
-                <li class="active">人</li>
-                <li>歌曲</li>
-                <li>电视</li>
-        </ul>	
-	</body>
-    <script src="./build/js/app.min.js"></script>
+			<div class="red-tc-btn">
+				<button>查看优惠券</button>
+			</div>
+		</div>
+		<!-- End 已中奖 -->
+		<!-- 未中奖 -->
+		<!-- <div class="red-yzj">
+			<div class="red-tc-k">
+				<img src="img/red-bw.png">
+				哎呀！</br>您的优惠券被风刮走了啊
+			</div>
+			<div class="red-tc-btn">
+				<button>再摇一次</button>
+			</div>
+		</div> -->
+		<!-- End 未中奖 -->
+		<!-- 机会用光了 -->
+		<!-- <div class="red-yzj">
+			<div class="red-tc-k">
+				<img src="img/red-jh.png">
+				机会用光了哦！</br>明天再来吧！
+			</div>
+			<div class="red-tc-btn">
+				<button>返回主页</button>
+			</div>
+		</div> -->
+		<!-- End 机会用光了 -->
+	</div>
+</div>
+<!-- End 礼品 -->
+</body>
+<script type="text/javascript" src="./build/js/app.min.js"></script>
 </html>
