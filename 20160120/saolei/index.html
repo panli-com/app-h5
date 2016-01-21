@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>微信雷达扫描</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/ming.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="load">
+            <div class="border1">
+                <div class="pointer"></div>
+                <div class="user">
+                    <span class="userOne">
+                        <img src="images/1.jpg" width="100%">
+                    </span>
+                    <span class="userTwo">
+                        <img src="images/2.jpg" width="100%">
+                    </span>
+                    <span class="userThree">
+                        <img src="images/3.jpg" width="100%">
+                    </span>
+                    <span class="userFour">
+                        <img src="images/4.jpg" width="100%">
+                    </span>
+                    <span class="userFive">
+                        <img src="images/5.jpg" width="100%">
+                    </span>
+                    <span class="userSix">
+                        <img src="images/6.jpg" width="100%">
+                    </span>
+                    <span class="userSeven">
+                        <img src="images/7.jpg" width="100%">
+                    </span>
+                    <span class="userEight">
+                        <img src="images/8.jpg" width="100%">
+                    </span>
+                    <span class="userNine">
+                        <img src="images/9.jpg" width="100%">
+                    </span>
+                </div>
+                <div class="border2">
+                    <div class="border3">
+                        <div class="radar">
+                            <span class="avatar">
+                                <img src="images/10.jpg" width="100%">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn">使劲摇</button>
+        </div>
+    </div>
+    <script>
+        $(".btn").click(function () {
+            $(".pointer").addClass("pointerAnim");  //添加雷达旋转动画
+            var timeout = 1000;  //每隔1000ms
+            var index = 0;
+            var addClass;
+            addClass = setInterval(function(){
+                if(index >= $(".user span").length){
+                    index = 0;
+                    addClass = clearInterval(addClass);  //结束循环
+                    $(".user span").removeClass("flip").addClass("shadow")
+                }else {
+                    $(".user span").eq(index++).fadeIn(timeout).addClass("flip")
+                }
+            },timeout);
+        })
+    </script>
+</body>
+</html>
