@@ -51,7 +51,7 @@ footer.addEventListener("click",function(e){
 					}
 					li.setAttribute("class","active");
 				}
-			});
+});
 			function animationend(e){
 				var div = e.target;
 				div.className = "";
@@ -66,16 +66,20 @@ footer.addEventListener("click",function(e){
 			handsome.addEventListener("animationend",animationend);
 			handsome.addEventListener("webkitAnimationEnd",animationend);
 
-			var hands = handsome.getElementsByTagName("div");
-			function onShake(){
-				if(hands[1].className){
-					return;
-				}
-				audio_male.play();
-				hands[0].setAttribute("class","hand-up");
-				hands[1].className = "hand-down";
-				if(result.className === "result-in"){
-					result.className = "result-out";
-				}
-			}
+var hands = handsome.getElementsByTagName("div");
+
+
+function onShake(){
+    if(hands[1].className){
+        return;
+    }
+    audio_male.play();
+    hands[0].setAttribute("class","hand-up");
+    hands[1].className = "hand-down";
+    if(result.className === "result-in"){
+        result.className = "result-out";
+    }
+}
+
+
 ShakeHandler(onShake,2500);
