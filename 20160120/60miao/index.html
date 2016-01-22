@@ -1,0 +1,132 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>60秒，</title>
+    <meta name="author" content="Karkin Leung (http://kark.in/)">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="true" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?3d8ac8f356357429d0d2ca0ff058f21e";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+
+<body>
+    <img src="img/share_img.jpg" width="0" height="0" />
+    <div id="canvas">
+        <div class="wrapper">
+            <div id="loading">
+                <div class="icon"></div>
+                <div class="dialog"></div>
+                <div class="btnClose"></div>
+            </div>
+            <div id="popupShare"></div>
+            <div id="popupFail">
+                <div class="dialog">
+                    <div id="sec1" class="num0"></div>
+                    <div id="sec2" class="num5"></div>
+                    <div class="btnClose"></div>
+                </div>
+            </div>
+            <div class="btnStartArea"></div>
+            <div id="mainCanvas"></div>
+            <div id="endPage">
+                <div class="btnAgain"></div>
+                <div class="btnLink"></div>
+                <div class="btnShare"></div>
+            </div>
+            <div class="btnStart"></div>
+            <div id="countDown">
+                <div id="clock">
+                    <div class="arrow"></div>
+                </div>
+                <div id="min1" class="num0"></div>
+                <div id="min2" class="num1"></div>
+                <div id="colon1"></div>
+                <div id="sec1" class="num0"></div>
+                <div id="sec2" class="num0"></div>
+                <div id="colon2"></div>
+                <div id="msec1" class="num0"></div>
+                <div id="msec2" class="num0"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/plugin.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+    var js_url = "http://dpmovies.sinaapp.com/fas/dev/php/wechat_js/jsticket.php?js_url="+encodeURIComponent(location.href.split('#')[0]);
+    $.ajax({
+     type: "get",
+     async: false,
+     url: js_url,
+     dataType: "json",
+     success: function(res){
+         wx.config({
+             debug: false,
+             appId: res.appId,
+             timestamp: res.timestamp,
+             nonceStr: res.nonceStr,
+             signature: res.signature,
+             jsApiList: [
+               /* 所有要调用的 API 都要加到这个列表中 */
+               'onMenuShareTimeline',
+               'onMenuShareAppMessage',
+               'onMenuShareQQ',
+               'onMenuShareWeibo'
+             ]
+         });
+         var _url = location.href.split('#')[0];
+         _url = _url.substring(0, _url.lastIndexOf("/") + 1);
+         var dataForWeixin = {
+             title: $("title").text(),
+             desc: "送给每一位不愿浪费时间刷朋友圈的朋友",
+             imgUrl: _url+"img/share_img.jpg",
+             link: location.href
+         };
+         wx.ready(function () {
+             wx.onMenuShareTimeline({
+               title: dataForWeixin.title,
+               link: dataForWeixin.link,
+               imgUrl: dataForWeixin.imgUrl
+             });
+             wx.onMenuShareAppMessage({
+               title: dataForWeixin.title,
+               desc: dataForWeixin.desc,
+               link: dataForWeixin.link,
+               imgUrl: dataForWeixin.imgUrl
+             });
+             wx.onMenuShareQQ({
+               title: dataForWeixin.title,
+               desc: dataForWeixin.desc,
+               link: dataForWeixin.link,
+               imgUrl: dataForWeixin.imgUrl
+             });
+             wx.onMenuShareWeibo({
+               title: dataForWeixin.title,
+               desc: dataForWeixin.desc,
+               link: dataForWeixin.link,
+               imgUrl: dataForWeixin.imgUrl
+             });
+         });
+     },
+     error: function(){
+     }
+    });
+    </script>
+</body>
+
+</html>
