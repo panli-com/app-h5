@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 
 var day = '20160113',
-    mainjs = 'app',
+    mainjs = 'appcreat',
     maincss = 'app';
 
 // 引入组件
@@ -11,7 +11,6 @@ var sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
-    browserify = require('gulp-browserify'),
     notify = require('gulp-notify'),
     autoprefixer = require('gulp-autoprefixer'),
     zip = require('gulp-zip');
@@ -153,23 +152,6 @@ gulp.task('dev', ['sass'], function() {
 });
 
 
-/* 监听 文件变化  */
 
-gulp.task('watch', function() {
-
-    // 看守.scss 档
-    gulp.watch('./'+ day +'/src/scss/*.scss', ['sass']);
-    gulp.watch('./home/scss/*.scss', ['home']);
-    // 看守所有.js档
-    gulp.watch('./'+ day +'/*.js', ['scripts']);
-    gulp.watch('./'+ day +'/src/js/*.js', ['html','scripts']);
-
-    // 看守所有.html
-    gulp.watch('./'+ day +'/*.html',['html','zip']);
-    gulp.watch('./*.html',['homeHtml']);
-
-});
-
-gulp.task('serve',['connect','watch']);
 
 gulp.task('default', ['dev']);

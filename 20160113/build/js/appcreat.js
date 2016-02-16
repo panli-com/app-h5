@@ -12155,7 +12155,7 @@ module.exports={"ac":"com|edu|gov|net|mil|org","ad":"nom","ae":"co|net|org|sch|a
 });
 // v  
 function appV(){
-  return "0.0.6";
+  return "0.0.8";
 }
 
 
@@ -12204,6 +12204,7 @@ var PLElements = {
     "redbaby.suning.com":"ss",
     "yaofang.com":".gm",
     "jxdyf.com":"#app-download,.yemianxiabufen",
+    "lifevc.com":".top-bar-app,.item-footer",
     "chunshuitang.com":".jhdown,.goodsBottom",
     "1688.com":".roc-down-app,.open_alipay,.dangkou-pay,.copyright,.fui-footer,.sceneBottom,.wing-layout-bottom"
 }
@@ -12244,6 +12245,28 @@ var PLElements = {
           if(_hostName == 'h5.m.taobao.com'){
               console.log("竟然是手淘 == h5.m.taobao.com")
               PanLi('body').css({'paddingTop':'0'});             
+              
+          } 
+          
+          
+          if(_hostName == 'm.lifevc.com'){
+               
+               PanLi("header.avoid").css({'top':'0'});      
+               PanLi("article.item-body").removeClass('avoid');      
+            
+                
+                
+               var nod = document.createElement("style"),   
+                str = ".warp-Menus.avoid {top: 4rem;}";  
+                nod.type="text/css";  
+                if(nod.styleSheet){         //ie下  
+                nod.styleSheet.cssText = str;  
+                } else {  
+                nod.innerHTML = str;       //或者写成 nod.appendChild(document.createTextNode(str))  
+                }  
+                document.getElementsByTagName("head")[0].appendChild(nod);   
+                            
+            
               
           } 
           

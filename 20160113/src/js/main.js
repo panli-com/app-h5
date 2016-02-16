@@ -38,6 +38,28 @@
           } 
           
           
+          if(_hostName == 'm.lifevc.com'){
+               
+               PanLi("header.avoid").css({'top':'0'});      
+               PanLi("article.item-body").removeClass('avoid');      
+            
+                
+                
+               var nod = document.createElement("style"),   
+                str = ".warp-Menus.avoid {top: 4rem;}";  
+                nod.type="text/css";  
+                if(nod.styleSheet){         //ie下  
+                nod.styleSheet.cssText = str;  
+                } else {  
+                nod.innerHTML = str;       //或者写成 nod.appendChild(document.createTextNode(str))  
+                }  
+                document.getElementsByTagName("head")[0].appendChild(nod);   
+                            
+            
+              
+          } 
+          
+          
           if(_hostName == 'detail.m.tmall.com'){
             PanLi("#content").css({'paddingTop':'0'});
           }
