@@ -25,6 +25,7 @@
     "gulp-zip": "^3.0.2"
   },
   "dependencies": {
-    "plmi": "0.0.1"
+    "plmi": "0.0.1",
+    "gulp-sass": "^2.2.0"
   }
 }

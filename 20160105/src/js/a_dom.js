@@ -181,7 +181,7 @@ PanLi.extend = PanLi.fn.extend = function() {
 	}
 
 	for ( ; i < length; i++ ) {
-		// Only deal with non-null/undefined values
+		// Only deal with non-null/undefined values 
 		if ( (options = arguments[ i ]) != null ) {
 			// Extend the base object
 			for ( name in options ) {

@@ -181,7 +181,7 @@ PanLi.extend = PanLi.fn.extend = function() {
 	}
 
 	for ( ; i < length; i++ ) {
-		// Only deal with non-null/undefined values
+		// Only deal with non-null/undefined values 
 		if ( (options = arguments[ i ]) != null ) {
 			// Extend the base object
 			for ( name in options ) {
@@ -12155,7 +12155,7 @@ module.exports={"ac":"com|edu|gov|net|mil|org","ad":"nom","ae":"co|net|org|sch|a
 });
 // v  
 function appV(){
-  return "0.0.6";
+  return "0.0.7";
 }
 
 
@@ -12180,7 +12180,7 @@ function domainURI2(str){
 var PLElements = {
     "tmall.com":"#detail-base-smart-banner,#J_BottomSmartBanner,#J_BottomSmartBannerLink,.app-download-popup",
     "yixun.com":".goods_buy",
-    "taobao.com":".item-action,.J_bottomBar,.install-app",
+    "taobao.com":".item-action,.J_bottomBar,.install-app,.thw-smartbanner",
     "jd.com":".tryme,.cart-concern-btm-fixed,.topheader,.showfixedtop",
     "suning.com":".detail-download,.shopping-car",
     "yhd.com":"#product-buy-num",
@@ -12230,7 +12230,7 @@ var PLElements = {
           if(_hostName == 'localhost'){
               url = 'taobao.com';
           }else{
-              //url = tldjs.getDomain(window.location.href);
+              //url = tldjs.getDomain(window.location.href); 
               url = domainURI(window.location.href);
           }
           
@@ -12246,7 +12246,7 @@ var PLElements = {
                setTimeout(function(){
                     PanLi(PLElements[url]).remove();
                    setTimeoutF()
-               },700)
+               },600)
           }
           
           
