@@ -1,7 +1,7 @@
 var PLElements = {
     "tmall.com":"#detail-base-smart-banner,#J_BottomSmartBanner,#J_BottomSmartBannerLink",
     "yixun.com":".goods_buy",
-    "taobao.com":".item-action,.J_bottomBar,.install-app",
+    "taobao.com":".item-action,.J_bottomBar,.install-app,.thw-smartbanner",
     "jd.com":".tryme,.cart-concern-btm-fixed,.topheader,.showfixedtop",
     "suning.com":".detail-download,.shopping-car",
     "yhd.com":"#product-buy-num",

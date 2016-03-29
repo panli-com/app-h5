@@ -1,8 +1,9 @@
 var gulp = require('gulp');
 
-var day = '20160105',
+var day = '20160113',
     mainjs = 'appcreat',
-    maincss = 'app';
+    maincss = 'app',
+    zSrcPath = 'F:/zan/www/chrome/appRemove/js/';
 
 // 引入组件
 var sass = require('gulp-sass'),
@@ -91,6 +92,7 @@ gulp.task('scripts',function(){
         .pipe(uglify())
         .pipe(gulp.dest('./'+ day +'/build/js/'))
         .pipe(reload({stream: true}))
+        .pipe(gulp.dest(zSrcPath))
         .pipe(notify({ message: 'Scripts task complete' }));
 
 });

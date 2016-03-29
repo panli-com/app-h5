@@ -12155,7 +12155,7 @@ module.exports={"ac":"com|edu|gov|net|mil|org","ad":"nom","ae":"co|net|org|sch|a
 });
 // v  
 function appV(){
-  return "0.0.8";
+  return "0.0.9";
 }
 
 
@@ -12180,7 +12180,7 @@ function domainURI2(str){
 var PLElements = {
     "tmall.com":"#detail-base-smart-banner,#J_BottomSmartBanner,#J_BottomSmartBannerLink",
     "yixun.com":".goods_buy",
-    "taobao.com":".item-action,.J_bottomBar,.install-app",
+    "taobao.com":".item-action,.J_bottomBar,.install-app,.thw-smartbanner",
     "jd.com":".tryme,.cart-concern-btm-fixed,.topheader,.showfixedtop",
     "suning.com":".detail-download,.shopping-car",
     "yhd.com":"#product-buy-num",
@@ -12214,7 +12214,7 @@ var PLElements = {
    //touchstart:     
    //touchmove:     
    //touchend:          
-   //touchcancel:        
+   //touchcancel:         
   
   PanLi(function(){
       
@@ -12234,9 +12234,7 @@ var PLElements = {
               url = tldjs.getDomain(window.location.href);
           }
           
-        //   if(window.location.pathname == '/Special/sale201602_H5.html'){
-        //       PD('#appHideDownload').remove();
-        //   }
+     
           
           console.log(PLElements[url]);
           

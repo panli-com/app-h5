@@ -26,5 +26,6 @@ var PLElements = {
     "yaofang.com":".gm",
     "jxdyf.com":"#app-download,.yemianxiabufen",
     "chunshuitang.com":".jhdown,.goodsBottom",
+    "lifevc.com":".top-bar-app,.item-footer",
     "1688.com":".roc-down-app,.open_alipay,.dangkou-pay,.copyright,.fui-footer,.sceneBottom,.wing-layout-bottom"
 }

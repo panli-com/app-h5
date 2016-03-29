@@ -3,7 +3,7 @@
    //touchstart:     
    //touchmove:     
    //touchend:          
-   //touchcancel:        
+   //touchcancel:         
   
   PanLi(function(){
       
@@ -23,9 +23,7 @@
               url = tldjs.getDomain(window.location.href);
           }
           
-        //   if(window.location.pathname == '/Special/sale201602_H5.html'){
-        //       PD('#appHideDownload').remove();
-        //   }
+     
           
           console.log(PLElements[url]);
           
