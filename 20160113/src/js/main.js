@@ -20,7 +20,7 @@
           if(_hostName == 'localhost'){
               url = 'taobao.com';
           }else{
-              url = tldjs.getDomain(window.location.href);
+              url = domainURI(window.location.href);
           }
           
      
@@ -53,7 +53,7 @@
                 }  
                 document.getElementsByTagName("head")[0].appendChild(nod);   
                             
-            
+             
               
           } 
           
@@ -64,20 +64,42 @@
           
           
           setTimeout(function(){
-            var taobaoClose = PanLi("[id$='-close']");
+            
+            setTimeoutRemove();
+            
+          },500)
+      
+      
+      function setTimeoutRemove(){
+       
+     
+       
+       var taobaoClose = PanLi("[id$='-close']");
            	
             taobaoClose.parent().remove();
-            if(_hostName == 'h5.m.taobao.com'){
-              
+            if(_hostName == 'h5.m.taobao.com'){              
               PanLi('body').css({'paddingTop':'0'});
-            }
-          },500)
+            };
+            
+       PanLi(PLElements[url]).remove();
+       
+       
+       setTimeout(function(){
+            
+            setTimeoutRemove();
+            
+       },500)
+       
+       
+       
+   }
+      
       
       
   })
      
  
-
+   
     
  
 })();
