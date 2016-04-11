@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var day = '20160113',
     mainjs = 'appcreat',
     maincss = 'app',
-    zSrcPath = 'F:/zan/www/chrome/appRemove/js/';
+    zSrcPath = '/Users/julaud/www/panli/sf-panli-com/Ued/H5/elementRemove/js/';
 
 // 引入组件
 var sass = require('gulp-sass'),

@@ -21,7 +21,7 @@ var PLElements = {
     "quwan.com":"#appDown,.appCode",
     "xiangqu.com":".app-down-bar,.detail-buy-cart",
     "redbaby.suning.com":"ss",
-    "yaofang.com":".gm",
+    "yaofang.com":".gm .ggm",
     "jxdyf.com":"#app-download,.yemianxiabufen",
     "lifevc.com":".top-bar-app,.item-footer",
     "chunshuitang.com":".jhdown,.goodsBottom",
