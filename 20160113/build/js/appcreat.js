@@ -10311,7 +10311,7 @@ return PanLi;
 
 // v  
 function appV(){
-  return "0.1.12";
+  return "0.1.3";
 }
 
 
@@ -10324,7 +10324,7 @@ function domainURI(str){
 
 
 // 获取域名
-function domainURI2(str){
+function domainURI2(str){ 
 		var durl= /(\w*\.\w*\.(?:com|cn|top)).*/;
 		var domain = str.match(durl); 
 		return domain[1];
